@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { VersioningType } from '@nestjs/common';
+import { AppConstants } from './utils/constanst';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,9 +16,18 @@ async function bootstrap() {
       'The API to manage hospital appointments, patients and doctors.',
     )
     .setVersion('3.0')
-    .addTag('appointments', 'Operations related to appointments')
-    .addTag('patients', 'Operations related to patients')
-    .addTag('doctors', 'Operations related to doctors')
+    .addTag(
+      AppConstants.APPOINTMENTS_MODULE_NAME,
+      AppConstants.APPOINTMENTS_MODULE_DESCRIPTION,
+    )
+    .addTag(
+      AppConstants.PATIENTS_MODULE_NAME,
+      AppConstants.PATIENTS_MODULE_DESCRIPTION,
+    )
+    .addTag(
+      AppConstants.DOCTORS_MODULE_NAME,
+      AppConstants.DOCTORS_MODULE_DESCRIPTION,
+    )
     .addServer('http://localhost:3000', 'Local server')
     .addServer(
       'https://hospital-microservice.onrender.com',

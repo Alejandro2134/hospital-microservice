@@ -1,3 +1,5 @@
+import { ApiProperty } from '@nestjs/swagger';
+
 export type IPatientDTO = {
   id: number;
   name: string;
@@ -8,9 +10,17 @@ export type IPatientDTO = {
 
 export class PatientDTO implements IPatientDTO {
   id: number;
+
+  @ApiProperty()
   name: string;
+
+  @ApiProperty()
   last_name: string;
+
+  @ApiProperty()
   phone: string;
+
+  @ApiProperty()
   address: string;
 
   constructor(data: IPatientDTO) {
