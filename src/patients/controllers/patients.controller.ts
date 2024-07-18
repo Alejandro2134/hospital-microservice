@@ -7,11 +7,13 @@ import {
   Version,
   Body,
   Param,
+  Query,
 } from '@nestjs/common';
 import { PatientDTO } from '../dto/patient.dto';
 import { PatientsService } from '../services/patients.service';
 import { ApiTags } from '@nestjs/swagger';
 import { AppConstants } from 'src/utils/constanst';
+import { PaginationDTO } from '../dto/pagination.dto';
 
 @ApiTags(AppConstants.PATIENTS_MODULE_NAME)
 @Controller(AppConstants.PATIENTS_MODULE_NAME)
@@ -20,8 +22,8 @@ export class PatientsController {
 
   @Version('1')
   @Get()
-  async findAll() {
-    return await this.patientsService.findAll();
+  async findAll(@Query() pagination: PaginationDTO) {
+    return await this.patientsService.findAll(pagination.page);
   }
 
   @Version('1')
