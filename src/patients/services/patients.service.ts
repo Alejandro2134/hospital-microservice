@@ -10,8 +10,11 @@ export class PatientsService {
     private patientsRepo: typeof Patient,
   ) {}
 
-  async findAll(): Promise<PatientDTO[]> {
-    const patients = await this.patientsRepo.findAll();
+  async findAll(page: number): Promise<PatientDTO[]> {
+    const patients = await this.patientsRepo.findAll({
+      limit: 10,
+      offset: page,
+    });
     return patients.map(this.fromModelToDTO);
   }
 
