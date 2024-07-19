@@ -7,4 +7,5 @@ export enum AppConstants {
   DOCTORS_MODULE_DESCRIPTION = 'Operations related to doctors',
   APPOINTMENTS_MODULE_DESCRIPTION = 'Operations related to appointments',
   DOCTORS_PROVIDER = 'DOCTORS_REPOSITORY',
+  APPOINTMENTS_PROVIDER = 'APPOINTMENTS_REPOSITORY',
 }
