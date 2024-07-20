@@ -8,14 +8,17 @@ import {
   Body,
   Param,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { PatientDTO } from '../dto/patient.dto';
 import { PatientsService } from '../services/patients.service';
 import { ApiTags } from '@nestjs/swagger';
 import { AppConstants } from 'src/utils/constanst';
 import { PaginationDTO } from '../dto/pagination.dto';
+import { AuthGuard } from 'src/utils/guards/auth.guard';
 
 @ApiTags(AppConstants.PATIENTS_MODULE_NAME)
+@UseGuards(AuthGuard)
 @Controller(AppConstants.PATIENTS_MODULE_NAME)
 export class PatientsController {
   constructor(private patientsService: PatientsService) {}
