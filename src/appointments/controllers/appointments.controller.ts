@@ -7,6 +7,7 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
   Version,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
@@ -14,8 +15,10 @@ import { AppConstants } from 'src/utils/constanst';
 import { AppointmentsService } from '../services/appointments.service';
 import { PaginationDTO } from '../dto/pagination.dto';
 import { AppointmentDTO } from '../dto/appointment.dto';
+import { AuthGuard } from 'src/utils/guards/auth.guard';
 
 @ApiTags(AppConstants.APPOINTMENTS_MODULE_NAME)
+@UseGuards(AuthGuard)
 @Controller(AppConstants.APPOINTMENTS_MODULE_NAME)
 export class AppointmentsController {
   constructor(private appointmentsService: AppointmentsService) {}
